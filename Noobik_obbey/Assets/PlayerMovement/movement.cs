@@ -23,6 +23,9 @@ public class movement : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip runSound;
 
+    // ѕеременна€ дл€ отслеживани€ состо€ни€ курсора
+    private bool isCursorVisible = false;
+
     private void Start()
     {
         Cursor.visible = false;
@@ -31,6 +34,14 @@ public class movement : MonoBehaviour
 
     private void Update()
     {
+        // ѕроверка на нажатие клавиши Tab дл€ показа/скрыти€ курсора
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            isCursorVisible = !isCursorVisible;
+            Cursor.visible = isCursorVisible;
+            Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
