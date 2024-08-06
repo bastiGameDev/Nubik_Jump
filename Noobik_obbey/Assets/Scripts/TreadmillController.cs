@@ -9,6 +9,7 @@ public class TreadmillController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource soundRun;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
