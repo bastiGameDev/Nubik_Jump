@@ -51,6 +51,8 @@ public class ClimbingController : MonoBehaviour
         Vector3 finalPosition = new Vector3(4.96000004f, 3.05699992f, -84.9800034f);
         player.transform.position = finalPosition;
 
+        economy.PlusBanaceMoney(economy.GetBanaceForce() * 2);
+
         player.GetComponent<movement>().enabled = true;
         characterController.enabled = true;
     }

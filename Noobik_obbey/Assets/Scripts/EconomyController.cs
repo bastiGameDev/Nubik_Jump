@@ -33,7 +33,7 @@ public class EconomyController : MonoBehaviour
 
     public void PlusBanaceMoney(int money)
     {
-        PlayerPrefs.SetInt("pp_modey", GetBanaceMoney() + money);
+        PlayerPrefs.SetInt("pp_money", GetBanaceMoney() + money);
 
         RefreshStatsUI();
     }
