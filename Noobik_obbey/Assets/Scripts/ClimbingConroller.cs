@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ClimbingController : MonoBehaviour
@@ -13,6 +15,9 @@ public class ClimbingController : MonoBehaviour
     public CharacterController characterController;
 
     [SerializeField] private EconomyController economy;
+
+    [SerializeField] private RectTransform animUnit;
+    [SerializeField] private TextMeshProUGUI countForceForAnimationText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -51,9 +56,26 @@ public class ClimbingController : MonoBehaviour
         Vector3 finalPosition = new Vector3(4.96000004f, 3.05699992f, -84.9800034f);
         player.transform.position = finalPosition;
 
-        economy.PlusBanaceMoney(economy.GetBanaceForce() * 2);
+        StartCoroutine(AnimationUnit());
 
         player.GetComponent<movement>().enabled = true;
         characterController.enabled = true;
+    }
+
+    private IEnumerator AnimationUnit()
+    {
+        countForceForAnimationText.text = ("+" + (economy.GetBanaceForce() * 2).ToString());
+
+        animUnit.gameObject.SetActive(true);
+        
+        animUnit.DOAnchorPos(new Vector2(-964f, 486.25f), 2.0f).SetEase(Ease.InQuint);
+
+        yield return new WaitForSeconds(2.1f);
+
+        economy.PlusBanaceMoney(economy.GetBanaceForce() * 2);
+
+        animUnit.gameObject.SetActive(false);
+
+        animUnit.DOAnchorPos(new Vector2(-87f, -340f), 0.2f);
     }
 }

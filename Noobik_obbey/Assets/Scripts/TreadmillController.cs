@@ -1,5 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class TreadmillController : MonoBehaviour
@@ -11,6 +12,9 @@ public class TreadmillController : MonoBehaviour
     [SerializeField] private AudioSource soundRun;
 
     [SerializeField] private EconomyController economy;
+
+    [SerializeField] private RectTransform animUnit;
+    [SerializeField] private TextMeshProUGUI countForceForAnimationText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,8 +39,8 @@ public class TreadmillController : MonoBehaviour
     private IEnumerator RunTreadmill()
     {
         yield return new WaitForSeconds(3f);
-        
-        economy.PlusBanaceForce(2);
+
+        StartCoroutine(AnimationUnit());
 
         animator.SetBool("isRunningOnTreadmill", false);
 
@@ -44,8 +48,23 @@ public class TreadmillController : MonoBehaviour
         player.transform.position = finalPosition;
 
         player.GetComponent<movement>().enabled = true;
-        characterController.enabled = true;
+        characterController.enabled = true;        
+    }
 
-        
+    private IEnumerator AnimationUnit()
+    {
+        countForceForAnimationText.text = "+2";
+
+        animUnit.gameObject.SetActive(true);
+
+        animUnit.DOAnchorPos(new Vector2(-171f, 486.25f), 2.0f).SetEase(Ease.InQuint);
+
+        yield return new WaitForSeconds(2.1f);
+
+        economy.PlusBanaceForce(2);
+
+        animUnit.gameObject.SetActive(false);
+
+        animUnit.DOAnchorPos(new Vector2(-87f, -340f), 0.2f);   
     }
 }
