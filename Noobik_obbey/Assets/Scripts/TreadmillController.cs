@@ -10,6 +10,8 @@ public class TreadmillController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource soundRun;
 
+    [SerializeField] private EconomyController economy;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -33,6 +35,8 @@ public class TreadmillController : MonoBehaviour
     private IEnumerator RunTreadmill()
     {
         yield return new WaitForSeconds(3f);
+        
+        economy.PlusBanaceForce(2);
 
         animator.SetBool("isRunningOnTreadmill", false);
 
@@ -41,5 +45,7 @@ public class TreadmillController : MonoBehaviour
 
         player.GetComponent<movement>().enabled = true;
         characterController.enabled = true;
+
+        
     }
 }

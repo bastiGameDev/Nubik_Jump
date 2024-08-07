@@ -12,6 +12,8 @@ public class ClimbingController : MonoBehaviour
 
     public CharacterController characterController;
 
+    [SerializeField] private EconomyController economy;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
@@ -35,7 +37,7 @@ public class ClimbingController : MonoBehaviour
     {
         float elapsedTime = 0f;
         Vector3 startPosition = player.transform.position;
-        Vector3 targetPosition = startPosition + Vector3.up * climbHeight;
+        Vector3 targetPosition = startPosition + Vector3.up * economy.GetBanaceForce();
 
         while (elapsedTime < climbDuration)
         {
