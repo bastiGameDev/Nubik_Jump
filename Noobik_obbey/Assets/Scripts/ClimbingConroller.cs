@@ -8,7 +8,7 @@ public class ClimbingController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource soundRun;
     public float climbHeight = 1.0f; // Высота подъема за одно нажатие
-    [SerializeField] private float climbDuration = 10f; // Время подъема
+    public float climbSpeed = 5f; // Скорость подъема (юниты в секунду)
 
     public CharacterController characterController;
 
@@ -16,7 +16,7 @@ public class ClimbingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
             Vector3 initialPosition = new Vector3(3.96000004f, 2.05699992f, -44.7260017f);
             player.transform.position = initialPosition;
@@ -25,7 +25,7 @@ public class ClimbingController : MonoBehaviour
             soundRun.Stop();
 
             player.GetComponent<movement>().enabled = false;
-            characterController.enabled = false; 
+            characterController.enabled = false;
 
             animator.SetBool("isClimbing", true);
 
@@ -35,15 +35,12 @@ public class ClimbingController : MonoBehaviour
 
     private IEnumerator Climb()
     {
-        float elapsedTime = 0f;
         Vector3 startPosition = player.transform.position;
         Vector3 targetPosition = startPosition + Vector3.up * economy.GetBanaceForce();
 
-        while (elapsedTime < climbDuration)
+        while (player.transform.position.y < targetPosition.y)
         {
-            float t = elapsedTime / climbDuration;
-            player.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
-            elapsedTime += Time.deltaTime;
+            player.transform.position += Vector3.up * climbSpeed * Time.deltaTime;
             yield return null;
         }
 
@@ -55,6 +52,6 @@ public class ClimbingController : MonoBehaviour
         player.transform.position = finalPosition;
 
         player.GetComponent<movement>().enabled = true;
-        characterController.enabled = true; 
+        characterController.enabled = true;
     }
 }

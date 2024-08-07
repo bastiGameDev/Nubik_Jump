@@ -1685,7 +1685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423969829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10621916, y: 1.0049305e-17, z: -3.3361465e-17, w: 0.99434274}
+  m_LocalRotation: {x: 0.10621916, y: -8.680798e-16, z: 1.5532168e-16, w: 0.99434274}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5813,7 +5813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375566517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.117723845, y: 0.0000000041433137, z: -4.9118226e-10, w: 0.9930464}
+  m_LocalRotation: {x: 0.117723845, y: -0.000000014797546, z: 0.0000000017542221, w: 0.9930464}
   m_LocalPosition: {x: 8.21, y: 3.38632, z: -69.02278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7270,7 +7270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823527600}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07445498, y: 0.000000014859801, z: -0.0000000011094656, w: 0.9972244}
+  m_LocalRotation: {x: 0.074454986, y: -8.8324795e-16, z: 2.123631e-17, w: 0.9972244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7976,7 +7976,7 @@ MonoBehaviour:
   animator: {fileID: 566845791361787726}
   soundRun: {fileID: 1968817228}
   climbHeight: 100
-  climbDuration: 1
+  climbSpeed: 5
   characterController: {fileID: 1968817227}
   economy: {fileID: 1335281293}
 --- !u!65 &1954569937
