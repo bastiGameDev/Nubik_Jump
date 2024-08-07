@@ -7,6 +7,8 @@ public class TreadmillController : MonoBehaviour
 {
     
     public CharacterController characterController;
+    public AudioSource forcePlusSound;
+
     [SerializeField] private GameObject player;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource soundRun;
@@ -61,6 +63,7 @@ public class TreadmillController : MonoBehaviour
 
         yield return new WaitForSeconds(2.1f);
 
+        forcePlusSound.Play();
         economy.PlusBanaceForce(2);
 
         animUnit.gameObject.SetActive(false);

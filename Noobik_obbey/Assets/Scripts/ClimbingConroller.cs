@@ -13,6 +13,7 @@ public class ClimbingController : MonoBehaviour
     public float climbSpeed = 5f; // Скорость подъема (юниты в секунду)
 
     public CharacterController characterController;
+    public AudioSource moneyPlusSound;
 
     [SerializeField] private EconomyController economy;
 
@@ -73,6 +74,7 @@ public class ClimbingController : MonoBehaviour
         yield return new WaitForSeconds(2.1f);
 
         economy.PlusBanaceMoney(economy.GetBanaceForce() * 2);
+        moneyPlusSound.Play();
 
         animUnit.gameObject.SetActive(false);
 
