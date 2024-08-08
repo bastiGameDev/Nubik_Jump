@@ -5,7 +5,7 @@ public class HungerSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshPro hungerText;
     [SerializeField] private EconomyController economy; // Добавьте ссылку на ваш экономический скрипт
-    private int currentHunger = 100;
+    public int currentHunger = 100;
     private float hungerDecreaseInterval = 1.55f; // Интервал уменьшения голода
     private float timer = 0f;
 
@@ -52,7 +52,7 @@ public class HungerSystem : MonoBehaviour
         }
     }
 
-    void UpdateHungerText()
+    public void UpdateHungerText()
     {
         hungerText.text = $"{currentHunger}/100";
     }
