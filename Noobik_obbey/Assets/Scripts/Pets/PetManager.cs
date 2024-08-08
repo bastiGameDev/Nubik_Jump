@@ -9,6 +9,8 @@ public class PetManager : MonoBehaviour
     private const string PETS_PURCHASED_KEY = "PetsPurchased";
     private const string ACTIVE_PET_INDEX_KEY = "ActivePetIndex";
 
+    [SerializeField] private GameObject hunger;
+
     void Start()
     {
         // Инициализация массива купленных питомцев
@@ -24,6 +26,11 @@ public class PetManager : MonoBehaviour
         if (activePetIndex >= 0 && activePetIndex < pets.Length)
         {
             ActivatePet(activePetIndex);
+        }
+
+        if (IsAnyPetActive())
+        {
+            hunger.gameObject.SetActive(true);
         }
     }
 
@@ -57,6 +64,8 @@ public class PetManager : MonoBehaviour
     void LoadActivePet()
     {
         activePetIndex = PlayerPrefs.GetInt(ACTIVE_PET_INDEX_KEY, -1);
+
+
     }
 
     public void PurchasePet(int index)
@@ -99,6 +108,7 @@ public class PetManager : MonoBehaviour
                 pets[index].SetActive(true);
                 activePetIndex = index;
                 SaveActivePet();
+                hunger.gameObject.SetActive(true);
                 Debug.Log($"Pet {index} activated successfully.");
             }
             else
@@ -160,5 +170,11 @@ public class PetManager : MonoBehaviour
             Debug.LogError($"Invalid pet index: {index} or pet is not purchased.");
         }
     }
+
+    public bool IsAnyPetActive()
+    {
+        return activePetIndex >= 0 && activePetIndex < pets.Length;
+    }
+
 
 }

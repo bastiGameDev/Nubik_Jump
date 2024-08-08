@@ -157,4 +157,9 @@ public class EffectManager : MonoBehaviour
             Debug.LogError($"Invalid effect index: {index} or effect is not purchased.");
         }
     }
+
+    public bool IsAnyEffectActive()
+    {
+        return activeEffectIndex >= 0 && activeEffectIndex < effects.Length && effects[activeEffectIndex].activeSelf;
+    }
 }
