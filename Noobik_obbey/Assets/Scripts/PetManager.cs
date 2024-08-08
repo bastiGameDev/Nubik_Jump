@@ -49,27 +49,55 @@ public class PetManager : MonoBehaviour
     {
         if (index >= 0 && index < pets.Length)
         {
-            purchasedPets[index] = true;
-            SavePurchasedPets();
+            // Проверка, не куплен ли питомец уже
+            if (!purchasedPets[index])
+            {
+                purchasedPets[index] = true;
+                SavePurchasedPets();
+                Debug.Log($"Pet {index} purchased successfully.");
+            }
+            else
+            {
+                Debug.Log($"Pet {index} is already purchased.");
+            }
+        }
+        else
+        {
+            Debug.LogError($"Invalid pet index: {index}");
         }
     }
+
 
     public void ActivatePet(int index)
     {
-        if (index >= 0 && index < pets.Length && purchasedPets[index])
+        if (index >= 0 && index < pets.Length)
         {
-            // Деактивируем текущего активного питомца
-            if (activePetIndex >= 0 && activePetIndex < pets.Length)
+            // Проверка, куплен ли питомец
+            if (purchasedPets[index])
             {
-                pets[activePetIndex].SetActive(false);
-            }
+                // Деактивируем текущего активного питомца
+                if (activePetIndex >= 0 && activePetIndex < pets.Length)
+                {
+                    pets[activePetIndex].SetActive(false);
+                }
 
-            // Активируем нового питомца
-            pets[index].SetActive(true);
-            activePetIndex = index;
-            SaveActivePet();
+                // Активируем нового питомца
+                pets[index].SetActive(true);
+                activePetIndex = index;
+                SaveActivePet();
+                Debug.Log($"Pet {index} activated successfully.");
+            }
+            else
+            {
+                Debug.LogError($"Pet {index} is not purchased yet.");
+            }
+        }
+        else
+        {
+            Debug.LogError($"Invalid pet index: {index}");
         }
     }
+
 
     void SavePurchasedPets()
     {
