@@ -123,4 +123,42 @@ public class PetManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(ACTIVE_PET_INDEX_KEY, activePetIndex);
     }
+
+    public void HidePet()
+    {
+        if (activePetIndex >= 0 && activePetIndex < pets.Length)
+        {
+            pets[activePetIndex].SetActive(false);
+            activePetIndex = -1; // Сбрасываем индекс активного питомца
+            SaveActivePet();
+            Debug.Log("Active pet hidden.");
+        }
+        else
+        {
+            Debug.Log("No active pet to hide.");
+        }
+    }
+
+    public void ShowPet(int index)
+    {
+        if (index >= 0 && index < pets.Length && purchasedPets[index])
+        {
+            // Деактивируем текущего активного питомца, если он есть
+            if (activePetIndex >= 0 && activePetIndex < pets.Length)
+            {
+                pets[activePetIndex].SetActive(false);
+            }
+
+            // Активируем нового питомца
+            pets[index].SetActive(true);
+            activePetIndex = index;
+            SaveActivePet();
+            Debug.Log($"Pet {index} shown.");
+        }
+        else
+        {
+            Debug.LogError($"Invalid pet index: {index} or pet is not purchased.");
+        }
+    }
+
 }
