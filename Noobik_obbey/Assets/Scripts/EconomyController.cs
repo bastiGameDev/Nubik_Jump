@@ -45,6 +45,20 @@ public class EconomyController : MonoBehaviour
         RefreshStatsUI();
     }
 
+    public void MinusBanaceMoney(int minus)
+    {
+        PlayerPrefs.SetInt("pp_money", GetBanaceMoney() - minus);
+
+        RefreshStatsUI();
+    }
+
+    public void MinusBanaceForce(int minus)
+    {
+        PlayerPrefs.SetInt("pp_force", GetBanaceForce() - minus);
+
+        RefreshStatsUI();
+    }
+
 
 
 

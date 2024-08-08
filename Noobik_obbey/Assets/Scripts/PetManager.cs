@@ -27,6 +27,20 @@ public class PetManager : MonoBehaviour
         }
     }
 
+    public bool IsPetPurchased(int index)
+    {
+        if (index >= 0 && index < pets.Length)
+        {
+            return purchasedPets[index];
+        }
+        else
+        {
+            Debug.LogError($"Invalid pet index: {index}");
+            return false;
+        }
+    }
+
+
     void LoadPurchasedPets()
     {
         string purchasedPetsData = PlayerPrefs.GetString(PETS_PURCHASED_KEY, "");
