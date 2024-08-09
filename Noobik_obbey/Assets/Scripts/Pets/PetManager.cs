@@ -104,7 +104,7 @@ public class PetManager : MonoBehaviour
                     pets[activePetIndex].SetActive(false);
                 }
 
-                // Активируем нового питомца
+                // Активируем нового питомца                
                 pets[index].SetActive(true);
                 activePetIndex = index;
                 SaveActivePet();

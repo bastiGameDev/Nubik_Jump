@@ -20,6 +20,7 @@ public class BuyPetController : MonoBehaviour
 
     public EconomyController economy;
     public PetManager petManager;
+    public AudioSource petSound;
 
     private void Start()
     {       
@@ -58,6 +59,7 @@ public class BuyPetController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Y))
             {
+                petSound.Play();
                 petManager.ActivatePet(indexPet);
             }
         }

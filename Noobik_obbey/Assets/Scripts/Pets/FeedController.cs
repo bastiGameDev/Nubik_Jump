@@ -11,6 +11,8 @@ public class FeedController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textInfo;
     [SerializeField] private GameObject panelReject;
 
+    [SerializeField] private AudioSource feedSound;
+
     private void OnTriggerEnter(Collider other)
     {
         textInfo.text = "Нажми Е чтобы покормить питомца";
@@ -23,6 +25,7 @@ public class FeedController : MonoBehaviour
         {
             if (hunger.currentHunger <= 90)
             {
+                feedSound.Play();
                 economy.MinusBanaceMoney(1);
                 hunger.currentHunger = Mathf.Min(100, hunger.currentHunger + 20);
                 hunger.UpdateHungerText(); 
