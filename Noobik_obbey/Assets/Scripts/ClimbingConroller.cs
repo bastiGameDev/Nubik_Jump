@@ -69,8 +69,8 @@ public class ClimbingController : MonoBehaviour
 
         animUnit.gameObject.SetActive(true);
         
-        animUnit.DOAnchorPos(new Vector2(-964f, 486.25f), 2.0f).SetEase(Ease.InQuint);
-
+        animUnit.DOAnchorPos(new Vector2(-841f, 489f), 2.0f).SetEase(Ease.InQuint);
+        //Vector3(-841,489,0)
         yield return new WaitForSeconds(2.1f);
 
         economy.PlusBanaceMoney(economy.GetBanaceForce() * 2);
