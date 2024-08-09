@@ -7749,7 +7749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423969829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.106219165, y: 0.000000014816862, z: -0.000000001582789, w: 0.99434274}
+  m_LocalRotation: {x: 0.106219165, y: 0.000000014816863, z: -0.0000000015827891, w: 0.99434274}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11597,6 +11597,8 @@ MonoBehaviour:
   economy: {fileID: 1335281293}
   currentHunger: 100
   soundDamage: {fileID: 908910481}
+  panelReject: {fileID: 1137802155}
+  textRejection: {fileID: 1210256233}
 --- !u!4 &908910480
 Transform:
   m_ObjectHideFlags: 0
@@ -11831,6 +11833,7 @@ MonoBehaviour:
   economy: {fileID: 1335281293}
   hunger: {fileID: 908910479}
   textInfo: {fileID: 1607741499}
+  panelReject: {fileID: 1137802155}
 --- !u!1 &929519490
 GameObject:
   m_ObjectHideFlags: 0
@@ -14894,7 +14897,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u043A\u0430\u0437\u0430 \u0437\u0434\u0435\u0441\u044C"
+  m_text: "\u041F\u0438\u0442\u043E\u043C\u0435\u0446 \u0433\u043E\u043B\u043E\u0434\u0435\u043D
+    \n\u0422\u044B \u0442\u0435\u0440\u044F\u0435\u0448\u044C \u044D\u043D\u0435\u0440\u0433\u0438\u044E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a11c0f00a7e93e49bd6dfd16e8e3606, type: 2}
   m_sharedMaterial: {fileID: -2489967397052214323, guid: 5a11c0f00a7e93e49bd6dfd16e8e3606, type: 2}
@@ -14921,8 +14925,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14957,7 +14961,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -102.67926, y: 0, z: -103.87312, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16820,7 +16824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375566517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11772384, y: 0.000000014797546, z: -0.0000000017542221, w: 0.9930464}
+  m_LocalRotation: {x: 0.11772385, y: 0.0000000041433137, z: -4.9118226e-10, w: 0.9930464}
   m_LocalPosition: {x: 8.21, y: 3.38632, z: -69.02278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27568,7 +27572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145385379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13813663, y: 0.0000000147583075, z: -0.0000000020583963, w: 0.9904132}
+  m_LocalRotation: {x: 0.13813664, y: -8.711488e-16, z: 2.3335344e-17, w: 0.9904132}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

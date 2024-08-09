@@ -12,6 +12,8 @@ public class HungerSystem : MonoBehaviour
     private const string HungerKey = "Hunger";
 
     [SerializeField] private AudioSource soundDamage;
+    [SerializeField] private GameObject panelReject;
+    [SerializeField] private TextMeshProUGUI textRejection;
 
     void Start()
     {
@@ -39,7 +41,9 @@ public class HungerSystem : MonoBehaviour
                     {
                         soundDamage.Play();
                         economy.MinusBanaceForce(1);
-                        
+                        panelReject.SetActive(true);
+                        textRejection.text = "Питомец голоден \r\nТы теряешь энергию";
+
                         currentHunger = Mathf.Min(100, currentHunger + 1);
                         UpdateHungerText();
                     }

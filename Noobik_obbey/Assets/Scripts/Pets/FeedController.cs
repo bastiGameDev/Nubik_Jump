@@ -9,10 +9,12 @@ public class FeedController : MonoBehaviour
     [SerializeField] private HungerSystem hunger;
 
     [SerializeField] private TextMeshProUGUI textInfo;
+    [SerializeField] private GameObject panelReject;
 
     private void OnTriggerEnter(Collider other)
     {
         textInfo.text = "Нажми Е чтобы покормить питомца";
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,10 +32,20 @@ public class FeedController : MonoBehaviour
                 textInfo.text = "Питомец уже сыт.";
             }
         }
+        HidePanelReject();
     }
 
     private void OnTriggerExit(Collider other)
     {
         textInfo.text = "";
+        HidePanelReject();
+    }
+
+    private void HidePanelReject()
+    {
+        if (hunger.currentHunger >= 2)
+        {
+            panelReject.SetActive(false);
+        }
     }
 }
