@@ -10,6 +10,7 @@ public class PetManager : MonoBehaviour
     private const string ACTIVE_PET_INDEX_KEY = "ActivePetIndex";
 
     [SerializeField] private GameObject hunger;
+    [SerializeField] private AudioSource buyPet;
 
     void Start()
     {
@@ -75,6 +76,7 @@ public class PetManager : MonoBehaviour
             // Проверка, не куплен ли питомец уже
             if (!purchasedPets[index])
             {
+                buyPet.Play();
                 purchasedPets[index] = true;
                 SavePurchasedPets();
                 Debug.Log($"Pet {index} purchased successfully.");

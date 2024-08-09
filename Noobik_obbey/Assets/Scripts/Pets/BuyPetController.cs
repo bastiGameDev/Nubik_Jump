@@ -20,7 +20,7 @@ public class BuyPetController : MonoBehaviour
 
     public EconomyController economy;
     public PetManager petManager;
-    public AudioSource petSound;
+    public AudioSource petSound;    
 
     private void Start()
     {       

@@ -21,6 +21,8 @@ public class BuyEffectController : MonoBehaviour
     public EconomyController economy;
     public EffectManager effectManager;
 
+    [SerializeField] private AudioSource effectSound;
+
     private void OnTriggerStay(Collider other)
     {
         textNameEffect.text = NameEffect;
@@ -33,8 +35,7 @@ public class BuyEffectController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (economy.GetBanaceMoney() >= priceEffect)
-                {
-                    //Здесь нада какойнгибдь звук надристать покупки
+                {                   
 
                     economy.MinusBanaceMoney(priceEffect);
 
@@ -54,6 +55,7 @@ public class BuyEffectController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Y))
             {
+                effectSound.Play();
                 effectManager.ActivateEffect(indexEffect);
             }
         }

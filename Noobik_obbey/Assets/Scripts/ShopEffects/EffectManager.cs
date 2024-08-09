@@ -9,6 +9,8 @@ public class EffectManager : MonoBehaviour
     private const string EFFECTS_PURCHASED_KEY = "EffectsPurchased";
     private const string ACTIVE_EFFECT_INDEX_KEY = "ActiveEffectIndex";
 
+    public AudioSource buyEffectSoundl;
+
     void Start()
     {
         // Инициализация массива купленных спецэффектов
@@ -65,6 +67,7 @@ public class EffectManager : MonoBehaviour
             // Проверка, не куплен ли спецэффект уже
             if (!purchasedEffects[index])
             {
+                buyEffectSoundl.Play();
                 purchasedEffects[index] = true;
                 SavePurchasedEffects();
                 Debug.Log($"Effect {index} purchased successfully.");
