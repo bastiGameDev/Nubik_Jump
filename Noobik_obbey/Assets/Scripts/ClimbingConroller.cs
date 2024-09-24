@@ -10,7 +10,8 @@ public class ClimbingController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource soundRun;
     public float climbHeight = 1.0f; // Высота подъема за одно нажатие
-    public float climbSpeed = 5f; // Скорость подъема (юниты в секунду)
+    public float baseClimbSpeed = 5f; // Базовая скорость подъема (юниты в секунду)
+    public float speedIncreasePerUnit = 0.5f; // Увеличение скорости на каждую единицу высоты
 
     public CharacterController characterController;
     public AudioSource moneyPlusSound;
@@ -44,6 +45,9 @@ public class ClimbingController : MonoBehaviour
         Vector3 startPosition = player.transform.position;
         Vector3 targetPosition = startPosition + Vector3.up * economy.GetBanaceForce();
 
+        float distance = Vector3.Distance(startPosition, targetPosition);
+        float climbSpeed = baseClimbSpeed + distance * speedIncreasePerUnit;
+
         while (player.transform.position.y < targetPosition.y)
         {
             player.transform.position += Vector3.up * climbSpeed * Time.deltaTime;
@@ -68,7 +72,7 @@ public class ClimbingController : MonoBehaviour
         countForceForAnimationText.text = ("+" + (economy.GetBanaceForce() * 2).ToString());
 
         animUnit.gameObject.SetActive(true);
-        
+
         animUnit.DOAnchorPos(new Vector2(-841f, 489f), 2.0f).SetEase(Ease.InQuint);
         //Vector3(-841,489,0)
         yield return new WaitForSeconds(2.1f);
