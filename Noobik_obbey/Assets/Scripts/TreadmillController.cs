@@ -11,7 +11,9 @@ public class TreadmillController : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private Animator animator;
+
     [SerializeField] private AudioSource soundRun;
+    [SerializeField] private AudioSource soundTredmill;
 
     [SerializeField] private EconomyController economy;
 
@@ -40,7 +42,9 @@ public class TreadmillController : MonoBehaviour
 
     private IEnumerator RunTreadmill()
     {
+        soundTredmill.Play();
         yield return new WaitForSeconds(3f);
+        soundTredmill.Stop();
 
         StartCoroutine(AnimationUnit());
 

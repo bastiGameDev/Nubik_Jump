@@ -43,7 +43,16 @@ public class ClimbingController : MonoBehaviour
     private IEnumerator Climb()
     {
         Vector3 startPosition = player.transform.position;
-        Vector3 targetPosition = startPosition + Vector3.up * economy.GetBanaceForce();
+        float force = economy.GetBanaceForce();
+        float maxForce = 386f;
+
+        // Ограничиваем силу до максимальной возможной силы
+        if (force > maxForce)
+        {
+            force = maxForce;
+        }
+
+        Vector3 targetPosition = startPosition + Vector3.up * force;
 
         float distance = Vector3.Distance(startPosition, targetPosition);
         float climbSpeed = baseClimbSpeed + distance * speedIncreasePerUnit;
@@ -58,8 +67,16 @@ public class ClimbingController : MonoBehaviour
 
         animator.SetBool("isClimbing", false);
 
-        Vector3 finalPosition = new Vector3(4.96000004f, 3.05699992f, -84.9800034f);
-        player.transform.position = finalPosition;
+        if (economy.GetBanaceForce() >= maxForce)
+        {
+            Vector3 finalPosition = new Vector3(5.09000015f, 399.209991f, -35.0200005f);
+            player.transform.position = finalPosition;
+        }
+        else
+        {
+            Vector3 finalPosition = new Vector3(4.96000004f, 3.05699992f, -84.9800034f);
+            player.transform.position = finalPosition;
+        }
 
         StartCoroutine(AnimationUnit());
 

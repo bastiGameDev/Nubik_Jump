@@ -26,7 +26,7 @@ public class FeedController : MonoBehaviour
             if (hunger.currentHunger <= 90)
             {
                 feedSound.Play();
-                economy.MinusBanaceMoney(1);
+                economy.MinusBanaceMoney(20);
                 hunger.currentHunger = Mathf.Min(100, hunger.currentHunger + 20);
                 hunger.UpdateHungerText(); 
             }
