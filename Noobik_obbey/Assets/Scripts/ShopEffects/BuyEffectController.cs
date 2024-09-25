@@ -22,6 +22,8 @@ public class BuyEffectController : MonoBehaviour
     public EffectManager effectManager;
 
     [SerializeField] private AudioSource effectSound;
+    public AudioSource soundNo;
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -45,6 +47,7 @@ public class BuyEffectController : MonoBehaviour
                 else
                 {
                     panelRejection.SetActive(true);
+                    soundNo.Play();
                     textRejection.text = "Недостаточно денег";
                 }
             }

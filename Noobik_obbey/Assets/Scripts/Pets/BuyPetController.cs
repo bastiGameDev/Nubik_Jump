@@ -20,7 +20,8 @@ public class BuyPetController : MonoBehaviour
 
     public EconomyController economy;
     public PetManager petManager;
-    public AudioSource petSound;    
+    public AudioSource petSound;
+    public AudioSource soundNo;
 
     private void Start()
     {       
@@ -49,6 +50,7 @@ public class BuyPetController : MonoBehaviour
                 else
                 {
                     panelRejection.SetActive(true);
+                    soundNo.Play();
                     textRejection.text = "Недостаточно денег";
                 }
             }

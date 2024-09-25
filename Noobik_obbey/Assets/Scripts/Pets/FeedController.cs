@@ -12,6 +12,8 @@ public class FeedController : MonoBehaviour
     [SerializeField] private GameObject panelReject;
 
     [SerializeField] private AudioSource feedSound;
+    [SerializeField] private AudioSource soundNo;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,6 +35,7 @@ public class FeedController : MonoBehaviour
             else
             {
                 textInfo.text = "Питомец уже сыт.";
+                soundNo.Play();
             }
         }
         HidePanelReject();
