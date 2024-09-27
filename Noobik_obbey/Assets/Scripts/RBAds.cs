@@ -12,6 +12,9 @@ public class RBAds : MonoBehaviour
     public void ResumeGame()
     {
         // ¬ключаем звуки
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         Time.timeScale = 1f;
         AudioListener.volume = 1;
         AudioListener.pause = false;

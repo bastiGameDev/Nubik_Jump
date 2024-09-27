@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using YG;
 using UnityEngine.UI;
 
 public class TimerPanelController : MonoBehaviour
@@ -64,13 +64,11 @@ public class TimerPanelController : MonoBehaviour
 
     void OnTimerEnd()
     {
-        // Выполняем действие по завершении таймера
         Debug.Log("Таймер закончился. Выполняем действие.");
 
-        // Пример действия: скрыть панель с таймером
         timerPanel.SetActive(false);
-        Debug.Log("РЕКЛАМА!");
-        RBAds.ShowAdv();
+
+        YandexGame.FullscreenShow();
 
         StartCoroutine(InitialDelay());
     }
