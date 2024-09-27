@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class TutorialController : MonoBehaviour
 {
-    public GameObject tutorialPanel; 
+    public GameObject tutorialPanel;
+    public AudioSource soundClick;
+    public AudioSource soundStartGame;
 
     private const string FirstTimeKey = "FirstTime";
     [SerializeField] private GameObject player;
 
     [SerializeField] GameObject[] tutorialFrames;
+
+
 
 
     void Start()
@@ -32,15 +36,18 @@ public class TutorialController : MonoBehaviour
     }
 
     public void NextSlide(int currentSlide)
-    {        
+    {
+        soundClick.Play();
+
         tutorialFrames[currentSlide].gameObject.SetActive(false);
-        tutorialFrames[currentSlide + 1].gameObject.SetActive(true);
+        tutorialFrames[currentSlide + 1].gameObject.SetActive(true);       
 
     }
 
     public void FinishTutorial()
     {
         tutorialFrames[4].gameObject.SetActive(false);
+        soundStartGame.Play();
 
         player.GetComponent<movement>().enabled = true;
         Cursor.visible = false;
