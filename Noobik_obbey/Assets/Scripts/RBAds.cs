@@ -12,12 +12,12 @@ public class RBAds : MonoBehaviour
     public void ResumeGame()
     {
         // Включаем звуки
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         Time.timeScale = 1f;
         AudioListener.volume = 1;
         AudioListener.pause = false;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Когда открывается какая-либо реклама, вызываем этот метод (можете добавить свои действия)
